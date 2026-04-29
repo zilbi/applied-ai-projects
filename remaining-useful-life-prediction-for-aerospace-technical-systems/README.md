@@ -48,4 +48,4 @@ Main dataset:
 
 - `presentation/` — presentation materials;
 - `interim-results/` — intermediate results;
-- `aerospace-rul-prediction/` — team working directory for active development and exchange of intermediate files.
+- [`aerospace-rul-prediction`](https://github.com/zilbi/aerospace-rul-prediction) — external team working repository used for active development and exchange of intermediate files.
