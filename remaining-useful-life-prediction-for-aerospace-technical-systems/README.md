@@ -2,10 +2,6 @@
 
 Status: in progress
 
-## Project Presentation
-
-[Project Overview Presentation](presentation/project-overview-presentation.pdf)
-
 ## Overview
 
 This project focuses on predicting the remaining useful life of aerospace technical systems using multivariate sensor time series.
@@ -50,6 +46,6 @@ Main dataset:
 
 ## Structure
 
-- `presentation/` — presentation materials;
+- `presentation/` — [project overview presentation](presentation/project-overview-presentation.pdf);
 - `interim-results/` — intermediate results;
-- [`aerospace-rul-prediction`](https://github.com/zilbi/aerospace-rul-prediction) — external team working repository used for active development and exchange of intermediate files.
+- [`aerospace-rul-prediction`](aerospace-rul-prediction) — external team working repository used for active development and exchange of intermediate files.
