@@ -46,6 +46,6 @@ Main dataset:
 
 ## Structure
 
-- `presentation/` — [project overview presentation](presentation/project-overview-presentation.pdf);
+- [presentation](presentation/project-overview-presentation.pdf) — project overview presentation used to communicate the project motivation, methodology and expected value;
 - `interim-results/` — intermediate results;
 - [`aerospace-rul-prediction`](aerospace-rul-prediction) — external team working repository used for active development and exchange of intermediate files.
