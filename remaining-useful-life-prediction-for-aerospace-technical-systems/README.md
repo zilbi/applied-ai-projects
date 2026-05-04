@@ -2,6 +2,10 @@
 
 Status: in progress
 
+## Project Presentation
+
+[Project Overview Presentation](presentation/project-overview-presentation.pdf)
+
 ## Overview
 
 This project focuses on predicting the remaining useful life of aerospace technical systems using multivariate sensor time series.
