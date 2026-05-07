@@ -4,9 +4,9 @@ Status: in progress
 
 ## Overview
 
-This project focuses on predicting the remaining useful life of aerospace technical systems using multivariate sensor time series
+This project focuses on predicting the remaining useful life of aerospace technical systems using multivariate sensor time series.
 
-The goal is to build models that estimate how many operating cycles remain before system failure based on historical sensor readings
+The goal is to build models that estimate how many operating cycles remain before system failure based on historical sensor readings.
 
 ## Task
 
