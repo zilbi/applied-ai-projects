@@ -48,4 +48,4 @@ Main dataset:
 
 - [presentation](presentation/project-overview-presentation.pdf) — project overview presentation used to communicate the project motivation, methodology and expected value
 - [interim-results](interim-results/) — intermediate experimental reports
-- [`aerospace-rul-prediction`](aerospace-rul-prediction) — external team working repository used for active development and exchange of intermediate files
+- [`aerospace-rul-prediction`](https://github.com/zilbi/aerospace-rul-prediction) — external team working repository used for active development and exchange of intermediate files
