@@ -1,4 +1,4 @@
-# AI Video Avatar Generation Bot
+# End-to-End GenAI Video Avatar System
 
 Applied AI project for creating avatar-led videos through a guided Telegram workflow
 
@@ -37,7 +37,7 @@ The project included:
 </p>
 
 <p align="center">
-  <em>Preview of the AI Video Avatar Generation Bot project.</em>
+  <em>Preview of the End-to-End GenAI Video Avatar System project.</em>
 </p>
 
 
