@@ -1,0 +1,6 @@
+Create a natural spoken greeting in English.
+Recipient: {recipient}
+Occasion: {occasion}
+Additional details: {details}
+
+Requirements: write three or four short sentences in a calm, professional and respectful tone. Do not use Markdown or add a signature. Do not invent facts that are not present in the input. Return only the finished script.

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "official",
+    "name_template": "{person_name} — official",
+    "style_name": "Official",
+    "description": "A calm and confident business delivery for formal announcements.",
+    "heygen_avatar_id_env": "HEYGEN_AVATAR_OFFICIAL_ID",
+    "motion_prompt_key": "official",
+    "demo_video": "assets/avatar_previews/official.mp4",
+    "active": true
+  },
+  {
+    "id": "friendly",
+    "name_template": "{person_name} — friendly",
+    "style_name": "Friendly",
+    "description": "A warm, open and expressive delivery for greetings and informal messages.",
+    "heygen_avatar_id_env": "HEYGEN_AVATAR_FRIENDLY_ID",
+    "motion_prompt_key": "friendly",
+    "demo_video": "assets/avatar_previews/friendly.mp4",
+    "active": true
+  },
+  {
+    "id": "natural",
+    "name_template": "{person_name} — natural",
+    "style_name": "Natural",
+    "description": "A calm and relaxed delivery for everyday messages and news.",
+    "heygen_avatar_id_env": "HEYGEN_AVATAR_NEUTRAL_ID",
+    "motion_prompt_key": "neutral",
+    "demo_video": "assets/avatar_previews/natural.mp4",
+    "active": true
+  },
+  {
+    "id": "energetic",
+    "name_template": "{person_name} — energetic",
+    "style_name": "Energetic",
+    "description": "A bright and motivating delivery for inspiring messages and important events.",
+    "heygen_avatar_id_env": "HEYGEN_AVATAR_ENERGETIC_ID",
+    "motion_prompt_key": "energetic",
+    "demo_video": "assets/avatar_previews/energetic.mp4",
+    "active": true
+  }
+]

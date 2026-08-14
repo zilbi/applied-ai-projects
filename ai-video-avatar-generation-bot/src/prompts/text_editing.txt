@@ -1,0 +1,7 @@
+Edit the existing script according to the user's request. Return only the complete revised script without commentary. Preserve the meaning and all confirmed facts. Do not add new facts. Keep the script natural for spoken delivery.
+
+Current script:
+{text}
+
+Requested change:
+{instruction}

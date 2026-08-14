@@ -5,4 +5,5 @@ Selected AI and machine learning projects.
 ## Projects
 
 - [LLM-Based Group Travel Planner](https://github.com/zilbi/llm-group-travel-planner)
+- [AI Video Avatar Generation Bot](./ai-video-avatar-generation-bot)
 - [Remaining Useful Life Prediction for Aerospace Technical Systems — in progress](./remaining-useful-life-prediction-for-aerospace-technical-systems)

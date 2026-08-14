@@ -1,0 +1,4 @@
+Prepare the script for spoken delivery. Preserve the meaning and facts, and do not add anything new. Correct grammar and punctuation, make each sentence natural to say aloud, expand known abbreviations and write numbers as words. Return only the final script.
+
+Script:
+{text}
