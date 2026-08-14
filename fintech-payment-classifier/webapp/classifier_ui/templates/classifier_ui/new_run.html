@@ -1,0 +1,12 @@
+{% extends 'classifier_ui/base.html' %}
+{% block content %}
+<section class="card narrow">
+  <h1>New classification</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p class="hint">Public-source research and website verification are standard pipeline stages. If a source is unavailable, classification continues with the evidence already collected.</p>
+    <button class="button primary">Start classification</button>
+  </form>
+</section>
+{% endblock %}

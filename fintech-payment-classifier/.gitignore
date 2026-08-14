@@ -1,0 +1,28 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local runtime data and generated artifacts
+results/
+outputs/
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Frontend and editor artifacts
+node_modules/
+.DS_Store
+.idea/
+.vscode/

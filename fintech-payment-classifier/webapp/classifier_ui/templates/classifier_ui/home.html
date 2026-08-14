@@ -1,0 +1,24 @@
+{% extends 'classifier_ui/base.html' %}
+{% block content %}
+<section class="hero">
+  <h1>Company classification</h1>
+  <p>Local payment data processing across {{ count }} runs.</p>
+  <a class="button primary" href="/runs/new/">Upload XLSX or CSV</a>
+</section>
+<section class="card">
+  <h2>Recent runs</h2>
+  <table>
+    <tr><th>File</th><th>Status</th><th>Companies</th><th>Created</th></tr>
+    {% for r in runs %}
+    <tr>
+      <td><a href="/runs/{{ r.id }}/">{{ r.original_filename }}</a></td>
+      <td><span class="badge {{ r.status|lower }}">{{ r.status }}</span></td>
+      <td>{{ r.companies_processed }}/{{ r.companies_total }}</td>
+      <td>{{ r.created_at }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">No classification runs yet.</td></tr>
+    {% endfor %}
+  </table>
+</section>
+{% endblock %}

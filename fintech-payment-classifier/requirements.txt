@@ -1,0 +1,14 @@
+pandas>=2.2
+openpyxl>=3.1
+pydantic>=2.0
+# Dependencies required for the local Django interface and saved ML pipelines.
+Django>=5.2,<5.3
+numpy>=1.26
+# Saved production estimators were serialized with this version.  Keep it
+# pinned so local inference does not silently run against a different format.
+scikit-learn==1.9.0
+joblib>=1.4
+catboost>=1.2
+
+# Tavily uses its documented HTTPS REST API through the Python standard library;
+# no tavily-python SDK is required or installed.

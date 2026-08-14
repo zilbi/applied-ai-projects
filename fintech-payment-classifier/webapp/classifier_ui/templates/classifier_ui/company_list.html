@@ -1,0 +1,27 @@
+{% extends 'classifier_ui/base.html' %}
+{% block content %}
+<section class="card">
+  <h1>Companies · {{ run.original_filename }}</h1>
+  <form class="filters">
+    <input name="q" placeholder="Company name or tax ID" value="{{ request.GET.q }}">
+    <select name="class">
+      <option value="">All classes</option><option>A</option><option>B</option><option>NON_FINTECH</option><option>REVIEW</option>
+    </select>
+    <select name="decision">
+      <option value="">Automatic and review</option><option>AUTO</option><option>MANUAL_REVIEW</option>
+    </select>
+    <button>Filter</button>
+  </form>
+  <table>
+    <tr><th>Company</th><th>Tax ID</th><th>Operations</th><th>Class</th><th>Confidence</th><th>Decision</th><th>Website</th></tr>
+    {% for r in page %}
+    <tr>
+      <td><a href="/runs/{{ run.id }}/companies/{{ r.company_id }}/">{{ r.canonical_name }}</a></td>
+      <td>{{ r.inn }}</td><td>{{ r.operation_count }}</td><td>{{ r.effective_final_class }}</td>
+      <td>{{ r.final_confidence|floatformat:2 }}</td><td>{{ r.decision_status }}</td><td>{{ r.site_status_label }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p>{% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">←</a>{% endif %} Page {{ page.number }} of {{ page.paginator.num_pages }} {% if page.has_next %}<a href="?page={{ page.next_page_number }}">→</a>{% endif %}</p>
+</section>
+{% endblock %}

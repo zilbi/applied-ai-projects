@@ -1,0 +1,15 @@
+{% extends 'classifier_ui/base.html' %}
+{% block content %}
+{% if run.status != 'COMPLETED' and run.status != 'FAILED' %}<meta http-equiv="refresh" content="3">{% endif %}
+<section class="card" id="run">
+  <h1>{{ run.original_filename }}</h1>
+  <p><span class="badge">{{ run.status }}</span> {{ run.current_stage }}</p>
+  <div class="progress"><i style="width:{{ run.progress_percent }}%"></i></div>
+  <p>{{ run.companies_processed }} / {{ run.companies_total }}</p>
+  <div>A: {{ run.class_a_count }} · B: {{ run.class_b_count }} · NON_FINTECH: {{ run.non_fintech_count }} · REVIEW: {{ run.review_count }}</div>
+  {% if run.error_message %}<p class="error">{{ run.error_message }}</p>{% endif %}
+  <p><a href="/runs/{{ run.id }}/companies/">Companies</a>
+  {% if run.status == 'COMPLETED' %} · <a href="/runs/{{ run.id }}/download/excel/">Download result workbook</a> · <a href="/runs/{{ run.id }}/download/csv/">CSV</a> · <a href="/runs/{{ run.id }}/download/json/">JSON</a>{% endif %}</p>
+  {% if run.status != 'COMPLETED' and run.status != 'FAILED' %}<p class="muted">This page refreshes every three seconds.</p>{% endif %}
+</section>
+{% endblock %}

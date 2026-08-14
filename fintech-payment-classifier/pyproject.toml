@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fintech-payment-classifier"
+version = "0.1.0"
+description = "Explainable company classification from payment operations"
+requires-python = ">=3.11"
+dependencies = ["pandas>=2.2", "openpyxl>=3.1", "pydantic>=2.0"]
+
+[project.scripts]
+fintech-classify = "fintech_classifier.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

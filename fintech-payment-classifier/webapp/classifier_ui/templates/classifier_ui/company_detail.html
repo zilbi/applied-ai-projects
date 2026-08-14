@@ -1,0 +1,108 @@
+{% extends 'classifier_ui/base.html' %}
+{% block content %}
+<p><a href="/runs/{{ run.id }}/companies/">← Back to companies</a></p>
+
+<section class="card">
+  <div class="detail-heading">
+    <div>
+      <p class="eyebrow">COMPANY</p>
+      <h1>{{ row.canonical_name }}</h1>
+      <p>Tax ID {{ row.inn|default:'not provided' }} · {{ row.operation_count }} operations</p>
+    </div>
+    <div>
+      <span class="badge">{{ row.decision_status }}</span>
+      <h2>{{ row.effective_final_class }}</h2>
+      <p class="confidence">Confidence {{ row.final_confidence|floatformat:3 }}</p>
+    </div>
+  </div>
+  <div class="metric-grid">
+    <div><span>Final score</span><strong>A {{ row.probability_a|floatformat:2 }} · B {{ row.probability_b|floatformat:2 }} · N {{ row.probability_non_fintech|floatformat:2 }}</strong></div>
+    <div><span>Rules</span><strong>A {{ row.rule_score_a|floatformat:2 }} · B {{ row.rule_score_b|floatformat:2 }} · N {{ row.rule_score_non_fintech|floatformat:2 }}</strong></div>
+    <div><span>Data quality</span><strong>{{ row.data_quality_score|floatformat:2 }}</strong></div>
+    <div><span>Website</span><strong>{{ row.site_status_label }}</strong></div>
+  </div>
+  <h3>Why this result was assigned</h3>
+  <p class="explanation">{{ row.explanation }}</p>
+</section>
+
+<section class="card">
+  <h2>Supporting evidence</h2>
+  <div class="evidence-list">
+    {% for item in rule_fired %}
+    <article><span class="badge">{{ item.supported_class }}</span><strong>{{ item.evidence }}</strong><small>{{ item.source }} · weight {{ item.weight|floatformat:2 }}</small></article>
+    {% empty %}
+    <p class="empty">No strong rule-based evidence was found.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="card">
+  <h2>Items requiring attention</h2>
+  <ul class="plain-list">
+    {% for x in row.review_reasons %}<li>{{ x }}</li>{% empty %}<li>No material manual-review reasons were found.</li>{% endfor %}
+  </ul>
+  {% if counter_evidence %}
+  <h3>Counter-evidence</h3>
+  <ul class="plain-list">{% for x in counter_evidence %}<li>{{ x }}</li>{% endfor %}</ul>
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>Official website and operations</h2>
+  <p>{% if row.site_url %}<a href="{{ row.site_url }}" rel="noopener" target="_blank">{{ row.site_url }}</a>{% else %}No reliable official website candidate was selected in this run.{% endif %}</p>
+  <p class="hint">Verification: {{ row.evidence.site_verification_status|default:'not started' }} · fetch: {{ row.site_status_label }} · analysis: {{ row.evidence.site_analysis_status|default:'not started' }}</p>
+  {% if representative_operations %}<p class="hint">Representative operations: {{ representative_operations|join:', ' }}</p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>Selected website analysis</h2>
+  <h3>Keywords</h3>
+  <div class="evidence-list">
+    {% for item in site_keywords %}
+    <article><strong>{{ item.text }}</strong><small>weight {{ item.score|floatformat:2 }} · occurrences {{ item.occurrences }}{% if item.page_urls %} · {{ item.page_urls|join:', ' }}{% endif %}</small>{% if item.contexts %}<small>{{ item.contexts|first }}</small>{% endif %}</article>
+    {% empty %}<p class="empty">Keywords were not extracted because the website was not analyzed successfully.</p>{% endfor %}
+  </div>
+  <h3>Key phrases</h3>
+  <div class="evidence-list">
+    {% for item in site_keyphrases %}
+    <article><strong>{{ item.text }}</strong><small>weight {{ item.score|floatformat:2 }} · occurrences {{ item.occurrences }}</small>{% if item.contexts %}<small>{{ item.contexts|first }}</small>{% endif %}</article>
+    {% empty %}<p class="empty">No key phrases were extracted.</p>{% endfor %}
+  </div>
+  <h3>Semantic signals</h3>
+  <div class="evidence-list">
+    {% for item in site_signals %}
+    <article><strong>{{ item.signal_family }} · {{ item.matched_phrase }}</strong><small>weight {{ item.weight|floatformat:2 }} · {{ item.page_url }}{% if item.html_zone %} · {{ item.html_zone }}{% endif %}</small>{% if item.context %}<small>{{ item.context }}</small>{% endif %}</article>
+    {% empty %}<p class="empty">No website signals were extracted.</p>{% endfor %}
+  </div>
+</section>
+
+<section class="card">
+  <h2>Official website discovery</h2>
+  <h3>Search attempts</h3>
+  <div class="evidence-list">
+    {% for item in website_search.attempts %}
+    <article><strong>{{ item.provider }} · {{ item.status }}</strong><small>{% if item.template_id %}{{ item.template_id }} · {% endif %}{% if item.search_query %}{{ item.search_query }}{% else %}{{ item.reason_for_call }}{% endif %}{% if item.credits_used != None %} · credits {{ item.credits_used }}{% endif %}</small>{% if item.error_message %}<small>{{ item.error_message }}</small>{% endif %}</article>
+    {% empty %}<p class="empty">Individual search attempts are not available for this run.</p>{% endfor %}
+  </div>
+  <h3>Evaluated candidates</h3>
+  <div class="evidence-list">
+    {% for item in website_search.candidates %}
+    <article>
+      <strong>{% if item.selected %}✓ selected domain · {% endif %}{% if item.search_position %}#{{ item.search_position }} · {% endif %}{{ item.candidate_url }}</strong>
+      <small>role: {{ item.domain_role|default:'OFFICIAL_CANDIDATE' }}{% if item.role_reason %} ({{ item.role_reason }}){% endif %} · source: {{ item.candidate_source|default:'existing search' }}</small>
+      <small>search={{ item.search_score|floatformat:0 }} · verification={{ item.verification_score|floatformat:0 }} · total={{ item.candidate_score|floatformat:0 }} · decision={{ item.verification_status }}</small>
+      <small>fetch={{ item.fetch_status }} · analysis={{ item.analysis_status }}</small>
+      {% if item.rejection_reason %}<small>Rejection reason: {{ item.rejection_reason }}</small>{% endif %}
+      {% if item.positive_evidence %}<small>Evidence: {{ item.positive_evidence|join:'; ' }}</small>{% endif %}
+      {% if item.negative_evidence %}<small>Limitations: {{ item.negative_evidence|join:'; ' }}</small>{% endif %}
+    </article>
+    {% empty %}<p class="empty">No website candidates were available.</p>{% endfor %}
+  </div>
+</section>
+
+<section class="card narrow">
+  <h2>Manual override</h2>
+  <p class="hint">The automatic result and probabilities are preserved separately.</p>
+  <form method="post">{% csrf_token %}{{ form.as_p }}<button class="button">Save override</button></form>
+</section>
+{% endblock %}
