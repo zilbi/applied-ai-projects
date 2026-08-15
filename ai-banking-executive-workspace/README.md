@@ -1,10 +1,10 @@
-# AI Client Portfolio Management Workspace
+# AI-Powered Banking Executive Workspace
 
-Applied AI project for unified client portfolio operations, risk monitoring and manager assistance
+Applied AI project for unified banking portfolio oversight, risk monitoring and executive decision support
 
 ## Overview
 
-This project developed a local desktop workspace that brings client records, deals, projects, tasks, meetings, performance metrics and communications into one operational view
+This project developed a local desktop workspace that gives banking executives a unified view of client records, deals, projects, tasks, meetings, performance metrics and communications
 
 The system combines deterministic portfolio analytics with an AI assistant, voice input, client risk detection, daily digests, meeting briefs and exportable client reports
 
@@ -32,11 +32,11 @@ The project included:
 - `main.py` — desktop application entry point
 
 <p align="center">
-  <img src="materials/client-portfolio-workspace-preview.svg" width="750">
+  <img src="materials/banking-executive-workspace-preview.svg" width="750">
 </p>
 
 <p align="center">
-  <em>Preview of the AI Client Portfolio Management Workspace.</em>
+  <em>Preview of the AI-Powered Banking Executive Workspace.</em>
 </p>
 
 

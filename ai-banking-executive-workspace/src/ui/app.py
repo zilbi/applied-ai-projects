@@ -16,7 +16,7 @@ LOADING_BACKGROUND_PATH = Path(__file__).resolve().parents[2] / "assets" / "load
 class SponsorAssistantApp:
     def __init__(self):
         pygame.init()
-        pygame.display.set_caption("AI Client Portfolio Workspace")
+        pygame.display.set_caption("AI-Powered Banking Executive Workspace")
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self._draw_loading_screen("Preparing the portfolio workspace", 0.38)
         init_db()
@@ -58,7 +58,7 @@ class SponsorAssistantApp:
         pygame.draw.line(self.screen, COLORS["surface"], (logo_center[0] - 3, logo_center[1] + 10), (logo_center[0] + 14, logo_center[1] - 10), 4)
         brand = brand_font.render("PORTFOLIO AI", True, COLORS["primary_dark"])
         self.screen.blit(brand, brand.get_rect(center=(card.centerx, card.y + 98)))
-        title = title_font.render("AI Client Portfolio Workspace", True, COLORS["text"])
+        title = title_font.render("AI-Powered Banking Executive Workspace", True, COLORS["text"])
         self.screen.blit(title, title.get_rect(center=(card.centerx, card.y + 138)))
         track = pygame.Rect(card.x + 72, card.y + 174, card.width - 144, 10)
         pygame.draw.rect(self.screen, COLORS["surface_alt"], track, border_radius=5)
