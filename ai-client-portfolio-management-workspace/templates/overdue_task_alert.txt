@@ -1,0 +1,6 @@
+Просрочена задача
+Клиент: {client_name}
+Задача: {task_title}
+Исполнитель: {owner}
+Срок: {due_date}
+Рекомендуемое действие: {recommended_action}

@@ -1,0 +1,4 @@
+Задача обновлена
+Клиент: {client_name}
+Задача: {task_title}
+Изменение: {change_description}

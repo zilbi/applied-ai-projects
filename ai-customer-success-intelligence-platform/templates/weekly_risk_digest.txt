@@ -1,0 +1,4 @@
+Weekly risk digest
+Risks: {{ risks_count }}
+Top actions:
+{{ actions }}

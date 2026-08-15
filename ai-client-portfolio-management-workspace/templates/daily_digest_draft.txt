@@ -1,0 +1,5 @@
+Ежедневная сводка для Спонсора
+Клиенты в зоне риска: {risk_clients}
+Просроченные задачи: {overdue_tasks}
+Ближайшие встречи: {upcoming_meetings}
+Рекомендации на день: {daily_recommendations}

@@ -1,0 +1,6 @@
+Daily digest
+Active clients: {{ active_clients }}
+Risky clients: {{ risky_clients }}
+Meetings today: {{ meetings_today }}
+Tasks:
+{{ tasks }}

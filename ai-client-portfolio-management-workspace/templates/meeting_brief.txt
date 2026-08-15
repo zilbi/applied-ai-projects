@@ -1,0 +1,5 @@
+Подготовка к встрече с {client_name}
+Дата: {meeting_datetime}
+Повестка: {agenda}
+Риски: {risks}
+Рекомендации: {recommendations}

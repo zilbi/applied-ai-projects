@@ -1,0 +1,6 @@
+Новая задача
+Клиент: {client_name}
+Задача: {task_title}
+Исполнитель: {assignee_name}
+Срок: {due_date}
+Приоритет: {priority}

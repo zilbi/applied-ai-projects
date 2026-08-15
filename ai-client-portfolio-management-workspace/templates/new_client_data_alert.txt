@@ -1,0 +1,4 @@
+Новые данные по клиенту {client_name}
+Событие: {event_title}
+Описание: {event_description}
+Влияние: {impact}

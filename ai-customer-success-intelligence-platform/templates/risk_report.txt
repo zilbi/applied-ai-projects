@@ -1,0 +1,11 @@
+Summary:
+{{ summary }}
+
+Metrics:
+{{ metrics }}
+
+Risks:
+{{ risks }}
+
+Recommendations:
+{{ recommendations }}

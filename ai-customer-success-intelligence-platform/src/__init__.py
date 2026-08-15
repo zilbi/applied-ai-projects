@@ -1,0 +1,1 @@
+"""CSM personal assistant package."""

@@ -1,0 +1,5 @@
+Напоминание о встрече
+Клиент: {client_name}
+Время: {meeting_datetime}
+Тема: {meeting_title}
+Что подготовить: {preparation_items}

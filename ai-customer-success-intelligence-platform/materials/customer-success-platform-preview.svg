@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title description">
+  <title id="title">AI Customer Success Intelligence Platform preview</title>
+  <desc id="description">An illustrative customer success dashboard with health, churn and risk monitoring.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f5ff"/><stop offset="1" stop-color="#edf7f7"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#251e55" flood-opacity="0.11"/></filter>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#7657d6"/><stop offset="1" stop-color="#2bb6a8"/></linearGradient>
+  </defs>
+  <rect width="1200" height="680" rx="28" fill="url(#bg)"/>
+  <rect x="38" y="34" width="1124" height="612" rx="22" fill="#fff" filter="url(#shadow)"/>
+  <rect x="38" y="34" width="1124" height="74" rx="22" fill="#241f4f"/><rect x="38" y="84" width="1124" height="24" fill="#241f4f"/>
+  <circle cx="77" cy="71" r="17" fill="#7657d6"/><path d="M68 71h18M77 62v18" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="108" y="79" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700">Customer Success Intelligence</text>
+  <rect x="993" y="52" width="137" height="38" rx="9" fill="#2bb6a8"/><text x="1061" y="77" fill="#fff" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700">Generate report</text>
+
+  <text x="76" y="151" fill="#252344" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="750">Portfolio intelligence</text>
+  <text x="76" y="177" fill="#77748d" font-family="Inter,Arial,sans-serif" font-size="15">Health, churn and risk signals across the customer portfolio</text>
+  <g font-family="Inter,Arial,sans-serif">
+    <g transform="translate(76 205)"><rect width="244" height="96" rx="13" fill="#f9f8fe" stroke="#e4e0f2"/><text x="18" y="28" fill="#77748d" font-size="13">Average health score</text><text x="18" y="66" fill="#312a6b" font-size="31" font-weight="750">76.8</text><text x="18" y="86" fill="#2c9a83" font-size="12">+3.2 this month</text></g>
+    <g transform="translate(336 205)"><rect width="244" height="96" rx="13" fill="#fff8f5" stroke="#f0ddd5"/><text x="18" y="28" fill="#83736c" font-size="13">High churn probability</text><text x="18" y="66" fill="#a34f34" font-size="31" font-weight="750">6</text><text x="18" y="86" fill="#bd6545" font-size="12">Immediate review</text></g>
+    <g transform="translate(596 205)"><rect width="244" height="96" rx="13" fill="#f9f8fe" stroke="#e4e0f2"/><text x="18" y="28" fill="#77748d" font-size="13">Open risk events</text><text x="18" y="66" fill="#312a6b" font-size="31" font-weight="750">14</text><text x="18" y="86" fill="#7657d6" font-size="12">4 critical</text></g>
+    <g transform="translate(856 205)"><rect width="274" height="96" rx="13" fill="#effaf8" stroke="#cce9e4"/><text x="18" y="28" fill="#5d7b75" font-size="13">AI-created next actions</text><text x="18" y="66" fill="#1b756a" font-size="31" font-weight="750">21</text><text x="18" y="86" fill="#2c9a83" font-size="12">Across 11 accounts</text></g>
+  </g>
+
+  <rect x="76" y="329" width="626" height="266" rx="14" fill="#fff" stroke="#e4e0f2"/>
+  <text x="100" y="365" fill="#252344" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700">Portfolio health trend</text>
+  <g stroke="#ece9f4" stroke-width="1"><line x1="110" y1="409" x2="670" y2="409"/><line x1="110" y1="457" x2="670" y2="457"/><line x1="110" y1="505" x2="670" y2="505"/><line x1="110" y1="553" x2="670" y2="553"/></g>
+  <polyline points="118,526 202,504 286,514 370,468 454,479 538,429 662,398" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#7657d6"><circle cx="118" cy="526" r="5"/><circle cx="202" cy="504" r="5"/><circle cx="286" cy="514" r="5"/><circle cx="370" cy="468" r="5"/><circle cx="454" cy="479" r="5"/><circle cx="538" cy="429" r="5"/><circle cx="662" cy="398" r="5"/></g>
+  <g fill="#88859a" font-family="Inter,Arial,sans-serif" font-size="11"><text x="110" y="578">JAN</text><text x="198" y="578">FEB</text><text x="282" y="578">MAR</text><text x="366" y="578">APR</text><text x="450" y="578">MAY</text><text x="534" y="578">JUN</text><text x="646" y="578">JUL</text></g>
+
+  <rect x="726" y="329" width="404" height="266" rx="14" fill="#fff" stroke="#e4e0f2"/>
+  <text x="750" y="365" fill="#252344" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700">Priority risks</text>
+  <g font-family="Inter,Arial,sans-serif">
+    <rect x="750" y="389" width="356" height="54" rx="10" fill="#fff4f1"/><circle cx="774" cy="416" r="8" fill="#d96745"/><text x="794" y="410" fill="#53342c" font-size="13" font-weight="700">High churn probability</text><text x="794" y="430" fill="#88675e" font-size="11">Beacon Services · action due today</text>
+    <rect x="750" y="455" width="356" height="54" rx="10" fill="#fff8eb"/><circle cx="774" cy="482" r="8" fill="#d89a33"/><text x="794" y="476" fill="#57452a" font-size="13" font-weight="700">Payment activity dropped</text><text x="794" y="496" fill="#8d7857" font-size="11">Atlas Industries · 32% below baseline</text>
+    <rect x="750" y="521" width="356" height="54" rx="10" fill="#f5f3fc"/><circle cx="774" cy="548" r="8" fill="#7657d6"/><text x="794" y="542" fill="#39335f" font-size="13" font-weight="700">No recent customer contact</text><text x="794" y="562" fill="#78728d" font-size="11">Northstar Retail · 16 days</text>
+  </g>
+</svg>

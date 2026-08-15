@@ -1,0 +1,10 @@
+pygame
+faster-whisper
+sounddevice
+sqlalchemy
+duckdb-engine
+python-dotenv
+passlib
+requests
+urllib3<2
+reportlab

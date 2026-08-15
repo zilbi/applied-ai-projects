@@ -1,0 +1,11 @@
+Objection:
+{{ objection }}
+
+Response:
+{{ response }}
+
+Proof:
+{{ proof }}
+
+Next step:
+{{ next_step }}

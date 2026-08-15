@@ -1,0 +1,7 @@
+Subject: {{ subject }}
+
+{{ greeting }}
+
+{{ body }}
+
+{{ next_step }}

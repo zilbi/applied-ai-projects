@@ -1,0 +1,10 @@
+Goal: {{ goal }}
+
+Opening:
+{{ opening }}
+
+Questions:
+{{ questions }}
+
+Close:
+{{ close }}

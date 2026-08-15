@@ -1,0 +1,5 @@
+Client: {{ client_name }}
+Health score: {{ health_score }}
+Churn probability: {{ churn_probability }}
+Risk reason: {{ reason }}
+Recommended action: {{ recommended_action }}

@@ -1,0 +1,11 @@
+Problem:
+{{ problem }}
+
+Hypotheses:
+{{ hypotheses }}
+
+Validation steps:
+{{ steps }}
+
+Similar case:
+{{ case }}
