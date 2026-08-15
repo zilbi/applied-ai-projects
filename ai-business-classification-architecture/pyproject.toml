@@ -3,7 +3,7 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fintech-payment-classifier"
+name = "ai-business-classification-architecture"
 version = "0.1.0"
 description = "Explainable company classification from payment operations"
 requires-python = ">=3.11"

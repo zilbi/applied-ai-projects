@@ -1,10 +1,10 @@
-# End-to-End Fintech Company Classification System
+# AI-Driven Business Classification Architecture
 
-Applied AI project for explainable company classification from bank payment operations
+Applied AI project for explainable business classification from bank payment operations
 
 ## Overview
 
-This project developed an end-to-end system that converts XLSX or CSV payment data into company-level fintech classifications
+This project developed an end-to-end architecture that converts XLSX or CSV payment data into company-level business classifications
 
 The pipeline validates and groups transactions, builds behavioral features, combines deterministic rules with machine learning, verifies public website evidence, and routes uncertain decisions to human review through a local Django interface
 
@@ -31,11 +31,11 @@ The project included:
 - `pyproject.toml` — Python package metadata and CLI entry point
 
 <p align="center">
-  <img src="materials/fintech-classifier-preview.svg" width="750">
+  <img src="materials/business-classification-architecture-preview.svg" width="750">
 </p>
 
 <p align="center">
-  <em>Preview of the End-to-End Fintech Company Classification System.</em>
+  <em>Preview of the AI-Driven Business Classification Architecture.</em>
 </p>
 
 
