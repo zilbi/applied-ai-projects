@@ -8,5 +8,5 @@ Selected AI and machine learning projects.
 - [End-to-End GenAI Video Avatar System](./ai-video-avatar-generation-bot)
 - [AI-Driven Business Classification Architecture](./ai-business-classification-architecture)
 - [AI-Powered Banking Executive Workspace](./ai-banking-executive-workspace)
-- [AI Customer Success Intelligence Platform](./ai-customer-success-intelligence-platform)
+- [AI-Enabled Relationship Intelligence Platform for Client Managers](./ai-relationship-intelligence-platform-for-client-managers)
 - [Remaining Useful Life Prediction for Aerospace Technical Systems — in progress](./remaining-useful-life-prediction-for-aerospace-technical-systems)

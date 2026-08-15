@@ -1,10 +1,10 @@
-# AI Customer Success Intelligence Platform
+# AI-Enabled Relationship Intelligence Platform for Client Managers
 
-Applied AI project for proactive customer success operations and AI-assisted portfolio management
+Applied AI project for relationship intelligence, proactive client management and AI-assisted portfolio decisions
 
 ## Overview
 
-This project developed an end-to-end platform that helps Customer Success teams monitor client health, identify churn risks, organize daily work and generate evidence-based recommendations
+This project developed an end-to-end platform that helps client managers monitor relationship health, identify churn risks, organize daily work and generate evidence-based recommendations
 
 The system combines a FastAPI backend, Telegram workflows, a Streamlit dashboard, PostgreSQL with vector search, background jobs and a context-grounded AI agent
 
@@ -36,11 +36,11 @@ The project included:
 - `scripts/` — setup, data generation and scheduled job entry points
 
 <p align="center">
-  <img src="materials/customer-success-platform-preview.svg" width="750">
+  <img src="materials/relationship-intelligence-platform-preview.svg" width="750">
 </p>
 
 <p align="center">
-  <em>Preview of the AI Customer Success Intelligence Platform.</em>
+  <em>Preview of the AI-Enabled Relationship Intelligence Platform for Client Managers.</em>
 </p>
 
 

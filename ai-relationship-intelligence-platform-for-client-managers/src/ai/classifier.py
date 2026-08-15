@@ -6,7 +6,7 @@ from typing import Any, Optional
 from src.ai.gigachat_client import GigaChatClient, mock_classification
 
 
-CLASSIFIER_SYSTEM_PROMPT = """Ты классификатор запросов для AI-помощника Customer Success Manager.
+CLASSIFIER_SYSTEM_PROMPT = """Ты классификатор запросов для AI-помощника Client Manager.
 Твоя задача — определить категорию запроса и извлечь сущности.
 Не отвечай содержательно.
 Верни только JSON без markdown.

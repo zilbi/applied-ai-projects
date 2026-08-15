@@ -8,8 +8,8 @@ from src.dashboard import pages_calendar, pages_cases, pages_clients, pages_metr
 
 
 def run_dashboard() -> None:
-    st.set_page_config(page_title="CSM Personal Assistant", layout="wide")
-    st.title("AI Customer Success Intelligence")
+    st.set_page_config(page_title="AI-Enabled Relationship Intelligence Platform for Client Managers", layout="wide")
+    st.title("AI-Enabled Relationship Intelligence Platform for Client Managers")
     page = st.sidebar.radio(
         "Workspace",
         [
