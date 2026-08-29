@@ -18,7 +18,7 @@ and to reduce dangerous RUL overestimation in safety-critical maintenance tasks.
 
 Main dataset:
 
-- NASA C-MAPSS Jet Engine Simulated Data
+- NASA C-MAPSS Jet Engine Data
 - FD001 subset
 - 100 training engines
 - 100 test engines
