@@ -10,9 +10,9 @@ and to reduce dangerous RUL overestimation in safety-critical maintenance tasks.
 
 ## Task
 
-- input: multivariate sensor time series
-- output: remaining useful life, measured in operating cycles
-- task type: time-series regression
+- Input: multivariate sensor time series
+- Output: remaining useful life, measured in operating cycles
+- Task type: time-series regression
 
 ## Data
 
@@ -26,12 +26,12 @@ Main dataset:
 
 ## Approach
 
-- data preprocessing and sensor analysis
-- rolling-window feature construction
+- Data preprocessing and sensor analysis
+- Rolling-window feature construction
 - Random Forest regression with a capped RUL target
-- quantile ensemble for conservative prediction
-- out-of-fold residual correction
-- safety-oriented error analysis
+- Quantile ensemble for conservative prediction
+- Out-of-fold residual correction
+- Safety-oriented error analysis
 
 ## Models
 
@@ -45,9 +45,9 @@ Main dataset:
 - MAE
 - RMSE
 - R²
-- asymmetric NASA RUL score
-- overestimation share
-- near-failure MAE
+- Asymmetric NASA RUL score
+- Overestimation share
+- Near-failure MAE
 
 ## Results
 
@@ -92,15 +92,15 @@ overestimation and near-failure behavior.
 
 ## Research Focus
 
-- effect of time-window features on RUL prediction
-- conservative prediction for safety-critical systems
-- reduction of RUL overestimation
-- error analysis across degradation stages
+- Effect of time-window features on RUL prediction
+- Conservative prediction for safety-critical systems
+- Reduction of RUL overestimation
+- Error analysis across degradation stages
 
 ## Structure
 
 - [Presentation](presentation/project-overview-presentation.pdf) — project overview
   presentation
-- [interim-results](interim-results/) — intermediate experimental reports
-- [aerospace-rul-prediction](aerospace-rul-prediction/) — final notebook,
+- [Interim-results](interim-results/) — intermediate experimental reports
+- [Aerospace-rul-prediction](aerospace-rul-prediction/) — final notebook,
   requirements and FD001 data
