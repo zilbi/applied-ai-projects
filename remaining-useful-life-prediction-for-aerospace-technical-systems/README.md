@@ -99,10 +99,8 @@ overestimation and near-failure behavior.
 
 ## Structure
 
-- [project overview presentation (PDF)](presentation/project-overview-presentation.pdf)
-  — current 12-slide project overview
-- [project overview presentation (PowerPoint)](presentation/safety-aware-rul-project-overview.pptx)
-  — editable version
+- [Presentation](presentation/project-overview-presentation.pdf) — project overview
+  presentation
 - [interim-results](interim-results/) — intermediate experimental reports
 - [aerospace-rul-prediction](aerospace-rul-prediction/) — final notebook,
   requirements and FD001 data
