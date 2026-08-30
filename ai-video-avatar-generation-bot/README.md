@@ -32,15 +32,6 @@ The project included:
 - `requirements.txt` — project dependencies
 - `main.py` — application entry point
 
-<p align="center">
-  <img src="materials/video-avatar-preview.jpg" width="750">
-</p>
-
-<p align="center">
-  <em>Preview of the End-to-End GenAI Video Avatar System project.</em>
-</p>
-
-
 ## Materials
 
 - [Avatar preview videos](assets/avatar_previews/)

@@ -35,12 +35,31 @@ The project included:
 - `templates/` — reports, client messages and operational scripts
 - `scripts/` — setup, data generation and scheduled job entry points
 
-<p align="center">
-  <img src="materials/relationship-intelligence-platform-preview.svg" width="750">
-</p>
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="materials/portfolio-overview-demo.jpg" alt="Portfolio overview demo dashboard" width="100%"><br>
+      <sub>Portfolio overview — demo dashboard using synthetic data</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="materials/risks-demo.jpg" alt="Risks demo dashboard" width="100%"><br>
+      <sub>Risk workspace — demo dashboard using synthetic data</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="materials/tasks-demo.jpg" alt="Tasks demo dashboard" width="100%"><br>
+      <sub>Task workspace — demo dashboard using synthetic data</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="materials/relationship-intelligence-platform-preview.svg" alt="Conceptual relationship intelligence workflow" width="100%"><br>
+      <sub>Conceptual visual of the relationship-intelligence workflow</sub>
+    </td>
+  </tr>
+</table>
 
 <p align="center">
-  <em>Preview of the AI-Enabled Relationship Intelligence Platform for Client Managers.</em>
+  <em>The dashboard captures use synthetic demo data. The fourth visual is conceptual.</em>
 </p>
 
 
