@@ -99,6 +99,8 @@ overestimation and near-failure behavior.
 
 ## Structure
 
+- [Interactive RUL Explorer](aerospace-rul-prediction/simulator/) — explore selected
+  C-MAPSS test-engine trajectories
 - [Presentation](presentation/project-overview-presentation.pdf) — project overview
   presentation
 - [Interim-results](interim-results/) — intermediate experimental reports

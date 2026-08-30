@@ -11,6 +11,8 @@ ensemble and out-of-fold residual correction.
 ## Final Notebook
 
 - [safety-aware-rul-prediction.ipynb](safety-aware-rul-prediction.ipynb)
+- [Interactive RUL Explorer](simulator/) — browser-based view of selected C-MAPSS
+  test-engine trajectories
 
 ## Results
 

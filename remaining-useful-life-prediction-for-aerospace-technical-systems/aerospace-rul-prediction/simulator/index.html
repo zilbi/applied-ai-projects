@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RUL Explorer</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, Arial, sans-serif; color: #112235; background: #f5f8fb; }
+    body { margin: 0; padding: 28px; }
+    main { max-width: 980px; margin: auto; }
+    h1 { margin: 0 0 8px; font-size: 30px; } p { color: #52677c; line-height: 1.5; }
+    .controls, .summary { display: flex; gap: 18px; flex-wrap: wrap; align-items: end; }
+    .card { background: #fff; border: 1px solid #d9e3ec; border-radius: 14px; padding: 18px; margin: 18px 0; }
+    label { display: grid; gap: 8px; font-weight: 650; } select, input { accent-color: #057e9b; font: inherit; }
+    select { min-width: 180px; padding: 8px; border: 1px solid #bdccda; border-radius: 7px; }
+    input[type="range"] { min-width: 300px; }
+    .metric { min-width: 170px; } .metric b { display: block; color: #0a829d; font-size: 30px; margin-top: 4px; }
+    .metric span { color: #5d7185; font-size: 13px; }
+    svg { width: 100%; height: auto; overflow: visible; } .grid { stroke: #dce6ee; } .line { fill: none; stroke: #0a829d; stroke-width: 3; } .point { fill: #0a829d; stroke: #fff; stroke-width: 2; } .axis { fill: #586d80; font-size: 12px; }
+    .note { font-size: 13px; color: #5d7185; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Remaining Useful Life Explorer</h1>
+    <p>Interactive view of selected engines from the NASA C-MAPSS FD001 test set. Move through an observed sensor history to see how the remaining operating horizon changes.</p>
+    <section class="card controls">
+      <label>Test engine
+        <select id="engine"></select>
+      </label>
+      <label>Observed cycle <span id="cycleLabel"></span>
+        <input id="cycle" type="range" min="1" step="1">
+      </label>
+    </section>
+    <section class="summary">
+      <div class="card metric"><span>Observed cycle</span><b id="cycleValue"></b></div>
+      <div class="card metric"><span>Known RUL at test end</span><b id="endRul"></b></div>
+      <div class="card metric"><span>Illustrative RUL at selected cycle</span><b id="selectedRul"></b></div>
+    </section>
+    <section class="card">
+      <svg id="chart" viewBox="0 0 900 300" role="img" aria-label="Illustrative remaining useful life trajectory"></svg>
+    </section>
+    <p class="note">The benchmark RUL is disclosed only at the final recorded test cycle. The cycle-level line is an educational reconstruction for exploring a degradation trajectory; it is not used in model training or reported evaluation.</p>
+  </main>
+  <script>
+    const engines = {
+      1: { last: 31, endRul: 112 },
+      20: { last: 184, endRul: 16 },
+      50: { last: 74, endRul: 79 },
+      80: { last: 133, endRul: 90 },
+      100: { last: 198, endRul: 20 }
+    };
+    const select = document.getElementById('engine');
+    const range = document.getElementById('cycle');
+    const svg = document.getElementById('chart');
+    Object.keys(engines).forEach(id => select.add(new Option(`Engine ${id}`, id)));
+    function render() {
+      const e = engines[select.value];
+      range.max = e.last;
+      if (+range.value > e.last || !range.value) range.value = e.last;
+      const cycle = +range.value;
+      const rul = e.endRul + e.last - cycle;
+      document.getElementById('cycleLabel').textContent = `${cycle} of ${e.last}`;
+      document.getElementById('cycleValue').textContent = cycle;
+      document.getElementById('endRul').textContent = `${e.endRul} cycles`;
+      document.getElementById('selectedRul').textContent = `${rul} cycles`;
+      const left = 62, right = 870, top = 24, bottom = 250, maxRul = e.endRul + e.last - 1;
+      const x = value => left + (value - 1) * (right - left) / Math.max(1, e.last - 1);
+      const y = value => bottom - value * (bottom - top) / maxRul;
+      let path = '';
+      for (let i = 1; i <= e.last; i++) path += `${i === 1 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(e.endRul + e.last - i).toFixed(1)} `;
+      svg.innerHTML = `<line class="grid" x1="${left}" x2="${right}" y1="${bottom}" y2="${bottom}"/><line class="grid" x1="${left}" x2="${left}" y1="${top}" y2="${bottom}"/><path class="line" d="${path}"/><circle class="point" cx="${x(cycle)}" cy="${y(rul)}" r="7"/><text class="axis" x="${left}" y="278">Cycle 1</text><text class="axis" x="${right - 70}" y="278">Cycle ${e.last}</text><text class="axis" x="10" y="${top + 8}">RUL</text><text class="axis" x="${x(cycle) + 10}" y="${y(rul) - 12}">${rul} cycles</text>`;
+    }
+    select.addEventListener('change', render); range.addEventListener('input', render); render();
+  </script>
+</body>
+</html>
