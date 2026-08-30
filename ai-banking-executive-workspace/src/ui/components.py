@@ -4,6 +4,7 @@ from typing import Callable, List, Optional
 import pygame
 
 from src.ui.theme import COLORS, RADII, SPACING
+from src.ui.localization import localize
 
 
 UI_DEBUG_HITBOXES = False
@@ -15,7 +16,7 @@ def _component_enabled(component):
 
 
 def ellipsize(text, font, width):
-    value = "" if text is None else str(text)
+    value = localize(text)
     if font.size(value)[0] <= width:
         return value
     while len(value) > 1 and font.size(value + "...")[0] > width:
@@ -24,7 +25,7 @@ def ellipsize(text, font, width):
 
 
 def draw_text(surface, font, text, pos, color=None):
-    rendered = font.render(str(text), True, color or COLORS["text"])
+    rendered = font.render(localize(text), True, color or COLORS["text"])
     surface.blit(rendered, pos)
     return rendered.get_rect(topleft=pos)
 

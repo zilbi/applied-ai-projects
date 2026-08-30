@@ -28,13 +28,13 @@ The project included:
 - `src/prompts/` — LLM prompts for script generation and editing
 - `config/` — avatar catalog and abbreviation settings
 - `templates/` — motion prompts for avatar styles
-- `assets/` — avatar preview videos
+- `assets/` — local workflow assets
 - `requirements.txt` — project dependencies
 - `main.py` — application entry point
 
 ## Materials
 
-- [Avatar preview videos](assets/avatar_previews/)
+- Video demonstration available on request.
 - [Configuration template](.env.example)
 
 ## Status

@@ -4,19 +4,19 @@ from src import repositories
 
 
 TASK_STATUS_LABELS = [
-    ("open", "Новые"),
-    ("in_progress", "В работе"),
-    ("overdue", "Просрочены"),
-    ("done", "Выполнены"),
+    ("open", "New"),
+    ("in_progress", "In progress"),
+    ("overdue", "Overdue"),
+    ("done", "Completed"),
 ]
 
 DEAL_STAGE_GROUPS = [
-    ("Инициирована", {"new", "qualification"}),
-    ("В работе", {"contract"}),
-    ("КП", {"proposal"}),
-    ("Переговоры", {"negotiation"}),
-    ("Закрыта", {"won"}),
-    ("Потеряна", {"lost"}),
+    ("Initiated", {"new", "qualification"}),
+    ("In progress", {"contract"}),
+    ("Proposal", {"proposal"}),
+    ("Negotiation", {"negotiation"}),
+    ("Closed", {"won"}),
+    ("Lost", {"lost"}),
 ]
 
 

@@ -42,16 +42,16 @@ from src.ui.components import (
 from src.ui.theme import COLORS, HEIGHT, WIDTH
 
 
-MAIN_TAB = "Панель"
-ONEPAGE_TAB = "Справка клиента"
-DAILY_DIGEST_TAB = "Ежедневная сводка"
-SECTION_TABS = ["Клиенты", "Проекты", "Задачи", "Сделки", "Календарь", "Показатели", ONEPAGE_TAB, DAILY_DIGEST_TAB, "Сообщения", "Шаблоны", "Уведомления"]
+MAIN_TAB = "Dashboard"
+ONEPAGE_TAB = "Client Brief"
+DAILY_DIGEST_TAB = "Daily Digest"
+SECTION_TABS = ["Clients", "Projects", "Tasks", "Deals", "Calendar", "Metrics", ONEPAGE_TAB, DAILY_DIGEST_TAB, "Messages", "Templates", "Notifications"]
 DEMO_TABLE_LIMIT = 5
 DEMO_DASHBOARD_LIMIT = 4
 ROLE_SECTIONS = {
     "admin": SECTION_TABS,
-    "sponsor": ["Клиенты", "Проекты", "Задачи", "Сделки", "Календарь", "Показатели", ONEPAGE_TAB, DAILY_DIGEST_TAB, "Сообщения", "Уведомления"],
-    "manager": ["Задачи", "Сообщения"],
+    "sponsor": ["Clients", "Projects", "Tasks", "Deals", "Calendar", "Metrics", ONEPAGE_TAB, DAILY_DIGEST_TAB, "Messages", "Notifications"],
+    "manager": ["Tasks", "Messages"],
 }
 QUICK_ASSISTANT_QUESTIONS = [
     ("Сводка", "Сделай краткую сводку на сегодня"),
@@ -441,27 +441,27 @@ class UIRenderer:
         self.draw_top_bar(surface, mouse)
         if self.state.active_tab == MAIN_TAB:
             self.draw_dashboard(surface, mouse)
-        elif self.state.active_tab == "Клиенты":
+        elif self.state.active_tab == "Clients":
             self.draw_clients(surface, mouse)
-        elif self.state.active_tab == "Проекты":
+        elif self.state.active_tab == "Projects":
             self.draw_projects(surface, mouse)
-        elif self.state.active_tab == "Задачи":
+        elif self.state.active_tab == "Tasks":
             self.draw_tasks(surface, mouse)
-        elif self.state.active_tab == "Сделки":
+        elif self.state.active_tab == "Deals":
             self.draw_deals(surface, mouse)
-        elif self.state.active_tab == "Календарь":
+        elif self.state.active_tab == "Calendar":
             self.draw_calendar(surface, mouse)
-        elif self.state.active_tab == "Показатели":
+        elif self.state.active_tab == "Metrics":
             self.draw_metrics(surface, mouse)
         elif self.state.active_tab == ONEPAGE_TAB:
             self.draw_onepage_screen(surface, mouse)
         elif self.state.active_tab == DAILY_DIGEST_TAB:
             self.draw_daily_digest_screen(surface, mouse)
-        elif self.state.active_tab == "Сообщения":
+        elif self.state.active_tab == "Messages":
             self.draw_messages(surface, mouse)
-        elif self.state.active_tab == "Уведомления":
+        elif self.state.active_tab == "Notifications":
             self.draw_notifications_screen(surface, mouse)
-        elif self.state.active_tab == "Шаблоны":
+        elif self.state.active_tab == "Templates":
             self.draw_templates(surface, mouse)
 
         if self.state.sections_menu_open:
@@ -982,7 +982,7 @@ class UIRenderer:
                 risk_rows.append({
                     "id": client.id,
                     "client": client.name,
-                    "level": "высокий" if risk["risk_level"] == "high" else "средний",
+                    "level": "high" if risk["risk_level"] == "high" else "medium",
                     "health": client.health_score,
                     "risk": risk["risk_score_local"],
                     "reason": risk["risk_reasons"][0] if risk["risk_reasons"] else "нет явной причины",
@@ -990,8 +990,8 @@ class UIRenderer:
         risk_rows = sorted(risk_rows, key=lambda item: item["risk"], reverse=True)
 
         user_name = self.state.current_user.full_name
-        draw_text(surface, self.fonts["title"], f"Добрый день, {user_name}", (18, 96))
-        summary = f"Сегодня требуют внимания: {len(risk_rows)} клиентов, {len(overdue)} задач, {len(meetings_today)} встреч."
+        draw_text(surface, self.fonts["title"], f"Good afternoon, {user_name}", (18, 96))
+        summary = f"Today needs attention: {len(risk_rows)} clients, {len(overdue)} tasks, {len(meetings_today)} meetings."
         draw_text(surface, self.fonts["normal"], summary, (18, 126), COLORS["muted"])
         if self.state.current_user.role == "admin":
             self.draw_button(surface, pygame.Rect(964, 96, 136, 30), "Проверки", self.run_background_checks)
@@ -1000,10 +1000,10 @@ class UIRenderer:
         analytics = self._dashboard_analytics(clients, tasks, deals, meetings)
         high_risk_count = len([item for item in risk_infos if item[1].get("risk_level") == "high"])
         kpis = [
-            ("Клиенты в фокусе", len(risk_rows), COLORS["primary"]),
-            ("Высокие риски", high_risk_count, COLORS["danger"] if high_risk_count else COLORS["success"]),
-            ("Просроченные задачи", len(overdue), COLORS["danger"] if overdue else COLORS["success"]),
-            ("Сделки без КП", len(no_offer), COLORS["warning"] if no_offer else COLORS["success"]),
+            ("Clients in focus", len(risk_rows), COLORS["primary"]),
+            ("High risks", high_risk_count, COLORS["danger"] if high_risk_count else COLORS["success"]),
+            ("Overdue tasks", len(overdue), COLORS["danger"] if overdue else COLORS["success"]),
+            ("Deals without proposal", len(no_offer), COLORS["warning"] if no_offer else COLORS["success"]),
         ]
         x = 18
         for label, value, color in kpis:
@@ -1015,18 +1015,18 @@ class UIRenderer:
             if task in overdue or task.status == "blocked":
                 client = client_by_id.get(task.client_id)
                 owner = user_by_id.get(task.assignee_user_id)
-                reason = "просрочена" if task in overdue else "заблокирована"
-                attention.append({"id": task.id, "tab": "Задачи", "select_key": "task", "type": "Задача", "client": client.name if client else "", "reason": reason, "action": task.title, "deadline": _fmt(task.due_date), "owner": owner.full_name if owner else ""})
+                reason = "overdue" if task in overdue else "blocked"
+                attention.append({"id": task.id, "tab": "Tasks", "select_key": "task", "type": "Task", "client": client.name if client else "", "reason": reason, "action": task.title, "deadline": _fmt(task.due_date), "owner": owner.full_name if owner else ""})
         for deal in no_offer:
             client = client_by_id.get(deal.client_id)
-            attention.append({"id": deal.id, "tab": "Сделки", "select_key": "deal", "type": "Сделка", "client": client.name if client else "", "reason": "нет КП", "action": deal.name, "deadline": _fmt(deal.last_activity_date), "owner": ""})
+            attention.append({"id": deal.id, "tab": "Deals", "select_key": "deal", "type": "Deal", "client": client.name if client else "", "reason": "no proposal", "action": deal.name, "deadline": _fmt(deal.last_activity_date), "owner": ""})
         for client, risk in risk_infos:
             if risk["risk_level"] == "high":
-                attention.append({"id": client.id, "tab": "Клиенты", "select_key": "client", "type": "Клиент", "client": client.name, "reason": risk["risk_reasons"][0] if risk["risk_reasons"] else "высокий риск", "action": "Назначить разбор", "deadline": _fmt(client.next_contact_due), "owner": ""})
+                attention.append({"id": client.id, "tab": "Clients", "select_key": "client", "type": "Client", "client": client.name, "reason": risk["risk_reasons"][0] if risk["risk_reasons"] else "high risk", "action": "Schedule review", "deadline": _fmt(client.next_contact_due), "owner": ""})
         try:
             for item in get_clients_with_contact_policy_violations()[:3]:
                 client = item["client"]
-                attention.append({"id": client.id, "tab": "Клиенты", "select_key": "client", "type": "Контакт", "client": client.name, "reason": "контактная политика", "action": item["check"]["message"], "deadline": _fmt(client.next_contact_due), "owner": ""})
+                attention.append({"id": client.id, "tab": "Clients", "select_key": "client", "type": "Contact", "client": client.name, "reason": "contact policy", "action": item["check"]["message"], "deadline": _fmt(client.next_contact_due), "owner": ""})
         except Exception:
             pass
         attention = attention[:DEMO_DASHBOARD_LIMIT]
@@ -1035,7 +1035,7 @@ class UIRenderer:
         for meeting in sorted(soon_meetings, key=lambda item: item.meeting_datetime)[:3]:
             client = client_by_id.get(meeting.client_id)
             day = meeting.meeting_datetime.date()
-            when = "сегодня" if day == today else "завтра" if day == today + timedelta(days=1) else meeting.meeting_datetime.strftime("%d.%m")
+            when = "today" if day == today else "tomorrow" if day == today + timedelta(days=1) else meeting.meeting_datetime.strftime("%d.%m")
             meeting_cards.append({"id": meeting.id, "when": when, "time": meeting.meeting_datetime.strftime("%H:%M"), "client": client.name if client else "", "title": meeting.title})
         self.draw_portfolio_analytics(surface, mouse, pygame.Rect(18, 260, 1244, 176), analytics)
         self.draw_attention_cards(surface, pygame.Rect(18, 454, 610, 304), attention)
@@ -1043,7 +1043,7 @@ class UIRenderer:
         self.draw_recommendations(surface, pygame.Rect(964, 454, 298, 304), risk_rows, overdue, no_offer, clients)
 
     def draw_attention_cards(self, surface, rect, items):
-        draw_panel(surface, rect, "Что требует внимания", self.fonts["small"], self.fonts["subtitle"])
+        draw_panel(surface, rect, "Requires attention", self.fonts["small"], self.fonts["subtitle"])
         if not items:
             draw_text(surface, self.fonts["normal"], "Критичных действий на сегодня нет", (rect.x + 18, rect.y + 64), COLORS["muted"])
             return
@@ -1054,7 +1054,7 @@ class UIRenderer:
             pygame.draw.rect(surface, COLORS["border"], card, width=1, border_radius=7)
             button_rect = pygame.Rect(card.right - 86, card.y + 10, 74, 28)
             content_right = button_rect.x - 10
-            badge_color = COLORS["danger"] if item["type"] in {"Задача", "Клиент"} else COLORS["warning"]
+            badge_color = COLORS["danger"] if item["type"] in {"Task", "Client"} else COLORS["warning"]
             draw_text(surface, self.fonts["small"], item["type"], (card.x + 10, card.y + 6), badge_color)
             draw_text(surface, self.fonts["small"], ellipsize(item.get("client", ""), self.fonts["small"], max(80, content_right - (card.x + 84))), (card.x + 84, card.y + 6))
             reason_text = _dashboard_reason_label(item.get("reason", ""))
@@ -1063,7 +1063,7 @@ class UIRenderer:
             action_width = max(90, reason_x - (card.x + 10) - 14)
             draw_text(surface, self.fonts["small"], ellipsize(item.get("action", ""), self.fonts["small"], action_width), (card.x + 10, card.y + 26), COLORS["text"])
             draw_text(surface, self.fonts["small"], reason_text, (reason_x, card.y + 26), COLORS["muted"])
-            self.draw_button(surface, button_rect, "Открыть", lambda item=item: self.open_attention_item(item), z_index=30)
+            self.draw_button(surface, button_rect, "Open", lambda item=item: self.open_attention_item(item), z_index=30)
             y += 54
 
     def draw_risk_cards(self, surface, rect, rows):
@@ -1089,7 +1089,7 @@ class UIRenderer:
             y += 58
 
     def draw_meeting_cards(self, surface, rect, rows):
-        draw_panel(surface, rect, "Ближайшие встречи", self.fonts["small"], self.fonts["subtitle"])
+        draw_panel(surface, rect, "Upcoming meetings", self.fonts["small"], self.fonts["subtitle"])
         if not rows:
             draw_text(surface, self.fonts["normal"], "Нет встреч", (rect.x + 16, rect.y + 64), COLORS["muted"])
             return
@@ -1107,13 +1107,13 @@ class UIRenderer:
             text_width = max(70, content_right - (card.x + 10))
             draw_text(surface, self.fonts["small"], ellipsize(row["client"], self.fonts["small"], text_width), (card.x + 10, card.y + 34))
             draw_text(surface, self.fonts["small"], ellipsize(row["title"], self.fonts["small"], text_width), (card.x + 10, card.y + 52), COLORS["muted"])
-            self.draw_button(surface, button_rect, "Открыть", lambda row=row: self.open_meeting_from_dashboard(row["id"]), z_index=30)
+            self.draw_button(surface, button_rect, "Open", lambda row=row: self.open_meeting_from_dashboard(row["id"]), z_index=30)
             y += 78
 
     def draw_portfolio_analytics(self, surface, mouse, rect, analytics):
-        draw_text(surface, self.fonts["subtitle"], "Аналитика портфеля", (rect.x, rect.y - 28))
+        draw_text(surface, self.fonts["subtitle"], "Portfolio analytics", (rect.x, rect.y - 28))
         analytics_subtitle = ellipsize(
-            "Три компактных графика по ключевым отклонениям",
+            "Three compact views of the key deviations",
             self.fonts["small"],
             520,
         )
@@ -1122,16 +1122,16 @@ class UIRenderer:
             surface,
             mouse,
             pygame.Rect(rect.x, rect.y, 520, rect.height),
-            "Динамика рисков",
-            "Клиенты со средним и высоким риском за 14 дней",
+            "Risk trend",
+            "Medium- and high-risk clients in the last 14 days",
             analytics.get("risk_trend", []),
         )
         self.draw_horizontal_bar_chart_card(
             surface,
             mouse,
             pygame.Rect(rect.x + 538, rect.y, 344, rect.height),
-            "Задачи по статусам",
-            "Новые, в работе, просроченные и выполненные",
+            "Tasks by status",
+            "New, in progress, overdue and completed",
             analytics.get("task_status_distribution", []),
             {
                 "open": COLORS["secondary"],
@@ -1144,8 +1144,8 @@ class UIRenderer:
             surface,
             mouse,
             pygame.Rect(rect.x + 900, rect.y, 344, rect.height),
-            "Сделки по стадиям",
-            "Структура воронки по закреплённым клиентам",
+            "Deals by stage",
+            "Deal pipeline for assigned clients",
             analytics.get("deal_stage_distribution", []),
             [COLORS["secondary"], COLORS["primary"], COLORS["warning"], COLORS["danger"], COLORS["success"], COLORS["muted"]],
         )
@@ -1285,7 +1285,7 @@ class UIRenderer:
             {"key": "status", "title": "Статус", "width": 120},
             {"key": "priority", "title": "Приоритет", "width": 114},
         ], rows, "dash_manager_tasks", lambda row: self.open_task_from_dashboard(row["id"]))
-        self.draw_button(surface, pygame.Rect(500, 580, 122, 28), "Подробнее", lambda: self.switch_tab("Задачи"))
+        self.draw_button(surface, pygame.Rect(500, 580, 122, 28), "Подробнее", lambda: self.switch_tab("Tasks"))
         message_rows = [{"id": m.id, "title": m.title, "body": m.body, "status": _ru(m.status), "created": _fmt(m.created_at)} for m in messages[:8]]
         self.draw_table_block(surface, "Сообщения", pygame.Rect(656, 210, 606, 360), [
             {"key": "title", "title": "Тема", "width": 180},
@@ -1293,19 +1293,19 @@ class UIRenderer:
             {"key": "status", "title": "Статус", "width": 80},
             {"key": "created", "title": "Дата", "width": 96},
         ], message_rows, "dash_manager_messages")
-        self.draw_button(surface, pygame.Rect(1140, 580, 122, 28), "Подробнее", lambda: self.switch_tab("Сообщения"))
+        self.draw_button(surface, pygame.Rect(1140, 580, 122, 28), "Подробнее", lambda: self.switch_tab("Messages"))
 
     def open_client_from_dashboard(self, client_id):
         self.state.selected["client"] = client_id
-        self.switch_tab("Клиенты")
+        self.switch_tab("Clients")
 
     def open_task_from_dashboard(self, task_id):
         self.state.selected["task"] = task_id
-        self.switch_tab("Задачи")
+        self.switch_tab("Tasks")
 
     def open_meeting_from_dashboard(self, meeting_id):
         self.state.selected["meeting"] = meeting_id
-        self.switch_tab("Календарь")
+        self.switch_tab("Calendar")
 
     def draw_bar_summary(self, surface, rect, items, title):
         draw_panel(surface, rect)
@@ -1869,7 +1869,7 @@ class UIRenderer:
         selected = next((n for n in notifications if n.id == self.state.selected.get("notification")), None)
         self.draw_button(surface, pygame.Rect(rect.x + 16, rect.y + 438, 150, 32), "Прочитано", lambda: self.read_notification(selected), disabled=not selected or selected.status == "read", z_index=170)
         self.draw_button(surface, pygame.Rect(rect.x + 182, rect.y + 438, 150, 32), "Открыть", lambda: self.open_notification_target(selected), disabled=not selected, z_index=170)
-        self.draw_button(surface, pygame.Rect(rect.x + 16, rect.y + 486, 316, 32), "Все уведомления", lambda: self.switch_tab("Уведомления"), z_index=170)
+        self.draw_button(surface, pygame.Rect(rect.x + 16, rect.y + 486, 316, 32), "Все уведомления", lambda: self.switch_tab("Notifications"), z_index=170)
 
     def draw_notifications_screen(self, surface, mouse):
         notifications = repositories.get_notifications_for_user(self.state.current_user, limit=200)
@@ -2260,11 +2260,11 @@ class UIRenderer:
 
     def open_client_projects(self, client):
         self.state.filters["project_client"] = client.name
-        self.switch_tab("Проекты")
+        self.switch_tab("Projects")
 
     def open_client_tasks(self, client):
         self.state.filters["task_client"] = client.name
-        self.switch_tab("Задачи")
+        self.switch_tab("Tasks")
 
     def open_latest_onepage(self, client):
         snapshot = onepage_service.get_latest_onepage(client.id)
@@ -2391,11 +2391,11 @@ class UIRenderer:
         if not notification:
             return
         if notification.task_id:
-            self.state.active_tab = "Задачи"; self.state.selected["task"] = notification.task_id
+            self.state.active_tab = "Tasks"; self.state.selected["task"] = notification.task_id
         elif notification.meeting_id:
-            self.state.active_tab = "Календарь"; self.state.selected["meeting"] = notification.meeting_id
+            self.state.active_tab = "Calendar"; self.state.selected["meeting"] = notification.meeting_id
         elif notification.client_id:
-            self.state.active_tab = "Клиенты"; self.state.selected["client"] = notification.client_id
+            self.state.active_tab = "Clients"; self.state.selected["client"] = notification.client_id
         self.state.notification_panel_open = False
 
     def calendar_today(self):

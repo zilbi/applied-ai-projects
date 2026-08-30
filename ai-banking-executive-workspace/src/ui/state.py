@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class AppState:
     current_user: object = None
-    active_tab: str = "Панель"
+    active_tab: str = "Dashboard"
     selected_template: str = None
     login: str = ""
     password: str = ""
