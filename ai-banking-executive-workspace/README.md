@@ -42,6 +42,8 @@ The project included:
 
 ## Materials
 
+- [Presentation](presentation/project-overview-presentation.pptx) — project overview
+  presentation
 - [Configuration template](.env.example)
 - [Operational templates](templates/)
 
