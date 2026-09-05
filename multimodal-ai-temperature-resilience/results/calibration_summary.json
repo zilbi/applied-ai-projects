@@ -1,0 +1,31 @@
+{
+  "reference_cohort_size": 2000,
+  "profile_distribution": {
+    "predominantly_heat_resilient": {"count": 520, "share": 0.26},
+    "predominantly_cold_resilient": {"count": 240, "share": 0.12},
+    "resilient_to_both_extremes": {"count": 60, "share": 0.03},
+    "moderate_profile": {"count": 1180, "share": 0.59}
+  },
+  "heat_cold_index_correlation": 0.07915080546850073,
+  "five_fold_out_of_fold_validation": {
+    "operational_two_index_model": {
+      "accuracy": 0.9845,
+      "balanced_accuracy": 0.9887684702303347,
+      "macro_f1": 0.9791308528436364,
+      "minimum_profile_recall": 0.9813559322033898
+    },
+    "full_post_protocol_model": {
+      "accuracy": 0.955,
+      "balanced_accuracy": 0.9265129291612343,
+      "macro_f1": 0.9354174691281881,
+      "minimum_profile_recall": 0.8666666666666667
+    },
+    "early_response_model": {
+      "accuracy": 0.6365,
+      "balanced_accuracy": 0.3461742177314211,
+      "macro_f1": 0.35259199457682144,
+      "minimum_profile_recall": 0.020833333333333332
+    }
+  },
+  "validation_note": "Metrics describe held-out folds from the current reference cohort. They are not external or prospective clinical validation."
+}
